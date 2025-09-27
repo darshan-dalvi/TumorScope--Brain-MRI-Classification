@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Advanced AI-powered brain tumor detection and classification from MRI scans">
+    <meta name="keywords" content="brain tumor, MRI, AI, medical diagnosis, neurology, healthcare">
+    <meta name="author" content="TumorScope">
+    <title>TumorScope - AI Brain Tumor Detection</title>
+    
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="static/css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🧠%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="brain-icon">🧠</div>
+            <h2>TumorScope</h2>
+            <div class="loading-spinner"></div>
+            <p>Initializing AI diagnostics...</p>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div class="app-container" id="appContainer">
+        <!-- Navigation Header -->
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-brand">
+                    <span class="brain-icon">🧠</span>
+                    <h1>TumorScope</h1>
+                </div>
+                <div class="nav-info">
+                    <span class="ai-badge">AI-Powered</span>
+                    <button class="info-btn" id="infoBtn">
+                        <i class="fas fa-info-circle"></i>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h2 class="hero-title">Advanced Brain Tumor Detection</h2>
+                <p class="hero-subtitle">Upload an MRI scan for instant AI-powered analysis and comprehensive medical insights</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">99%</span>
+                        <span class="stat-label">Accuracy</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">4</span>
+                        <span class="stat-label">Tumor Types</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">< 5s</span>
+                        <span class="stat-label">Analysis Time</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="upload-container">
+                    <div class="upload-box" id="dropZone">
+                        <div class="upload-overlay"></div>
+                        <img id="preview" class="preview-image hidden" alt="MRI Preview">
+                        <div class="upload-content" id="uploadContent">
+                            <div class="upload-icon">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                            </div>
+                            <h3 class="upload-title">Drop your MRI scan here</h3>
+                            <p class="upload-text">or <button class="browse-btn" type="button">browse files</button></p>
+                            <div class="upload-specs">
+                                <span class="spec">JPG, PNG, DICOM</span>
+                                <span class="spec">Max 10MB</span>
+                            </div>
+                        </div>
+                        <input type="file" id="fileInput" accept="image/*,.dcm" class="file-input">
+                    </div>
+                    
+                    <div class="upload-actions">
+                        <button id="analyzeBtn" class="analyze-btn hidden">
+                            <i class="fas fa-brain"></i>
+                            <span>Analyze MRI Scan</span>
+                        </button>
+                        <button id="clearBtn" class="clear-btn hidden">
+                            <i class="fas fa-times"></i>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Analysis Progress -->
+            <section id="analysisProgress" class="analysis-progress hidden">
+                <div class="progress-container">
+                    <div class="progress-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Analyzing MRI Scan...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <p class="progress-text" id="progressText">Preparing neural networks...</p>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section id="resultSection" class="result-section hidden">
+                <!-- Results will be dynamically inserted here -->
+            </section>
+        </main>
+
+        <!-- Info Modal -->
+        <div id="infoModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>About TumorScope</h3>
+                    <button class="modal-close" id="modalClose">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>TumorScope</strong> is an advanced AI-powered diagnostic tool designed to assist medical professionals in brain tumor detection and classification.</p>
+                    
+                    <h4>Features:</h4>
+                    <ul>
+                        <li>99% accuracy in tumor detection</li>
+                        <li>Classification of 4 major tumor types</li>
+                        <li>Comprehensive medical analysis</li>
+                        <li>Real-time processing</li>
+                    </ul>
+                    
+                    <div class="disclaimer">
+                        <h4>⚠️ Medical Disclaimer</h4>
+                        <p>This tool is for educational and research purposes only. Results should not be used for actual medical diagnosis. Always consult with qualified healthcare professionals for medical advice.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p>&copy; 2025 TumorScope - Advanced Brain Tumor Detection by Darshan Dalvi</p>
+                <div class="footer-links">
+                    <a href="#privacy">Privacy</a>
+                    <a href="#terms">Terms</a>
+                    <a href="#support">Support</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="static/js/script.js"></script>
+</body>
+</html>
